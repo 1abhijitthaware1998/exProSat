@@ -14,11 +14,15 @@
     <p>latitue:<span id='latitude'></span>&deg</br>
         longitude:<span id='longitude'></span>&deg
     </p>
+    <label for="country">Enter the country:</label>
+    <input id="country" value="India" />
+
     <button id='sate'>submit</button>
     <script>
         let lat, lon
         const button = document.getElementById('sate').addEventListener('click', async event=> {
-            const data={lat, lon}
+            const country = document.getElementById('country').value
+            const data={lat, lon, country}
             const options = {
                 method: 'POST',
                 headers: {
@@ -29,7 +33,7 @@
             const response = await fetch('/api',options)
             const json = await response.json()
             console.log(json)
-        })
+        });
 
         if('geolocation' in navigator){
             console.log('geolocation available');

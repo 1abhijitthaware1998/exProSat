@@ -12,13 +12,10 @@
 <body>
     <h1>My Express Project</h1>
     <p>Let's go ~</p>
-    <img src="" id="g1" width="300px">
     <script>     
         async function just(){
-            const response = await fetch('gan1.jpg')
+            const response = await fetch()
             const blob = await response.blob()
-            document.getElementById('g1').src=URL.createObjectURL(blob)
-
         }
         just()
     </script>
