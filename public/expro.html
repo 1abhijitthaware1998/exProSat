@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="IPL visualization">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0">
+    <title>Exp_Pro</title>
+</head>
+
+<body>
+    <h1>My Express Project</h1>
+    <p>Let's go ~</p>
+    <img src="" id="g1" width="300px">
+    <script>     
+        async function just(){
+            const response = await fetch('gan1.jpg')
+            const blob = await response.blob()
+            document.getElementById('g1').src=URL.createObjectURL(blob)
+
+        }
+        just()
+    </script>
+    
+</body>
+</html>
