@@ -12,12 +12,33 @@
 <body>
     <h1>My Express Project</h1>
     <p>Let's go ~</p>
-    <script>     
+    <script> 
+        just()    
         async function just(){
-            const response = await fetch()
-            const blob = await response.blob()
+            const response = await fetch('/api')
+            const data = await response.json()
+
+            for(item of data){
+                const root = document.createElement('div')
+                const country = document.createElement('div')
+                const lat = document.createElement('div')
+                const lon = document.createElement('div')
+                const date = document.createElement('div')
+                const br = document.createElement('div')
+
+                country.textContent = `country: ${item.country} ❇`
+                lat.textContent = `latitude: ${item.lat}°` 
+                lon.textContent = `longitude: ${item.lon}°`
+
+                const dateString = new Date(item.timestamp).toLocaleString()
+                date.textContent = dateString
+                br.textContent = '------------------------------'
+                root.append(country, lat, lon, date, br)
+                document.body.append(root)
+            }
+            console.log(data)
         }
-        just()
+        
     </script>
     
 </body>

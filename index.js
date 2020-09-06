@@ -1,5 +1,6 @@
 const express = require('express')
-const Datastore = require('nedb')
+const Datastore = require('nedb');
+const { response } = require('express');
 
 const app = express()
 
@@ -9,6 +10,16 @@ app.use(express.json({limit: '1mb'}));
 
 const database = new Datastore('database.db')
 database.loadDatabase()
+
+app.get('/api',(req,res)=>{
+    database.find({},(err,data)=>{
+        if(err){
+            res.end()
+            return;
+        }
+        res.json(data)
+    })
+})
 
 app.post('/api',(req,res)=>{
     console.log('I got a request')
